@@ -93,7 +93,9 @@ Your solution should focus on **maintainability**, **reusability** and
    reading the name, one should already have an idea of what something
    does.
 
-5. You may use additional third-party dependencies as you see fit. Please include your reasoning for your choice of libraries in your solution.
+5. Think about possible **error cases**, e.g. if a file is empty or contains invalid input, and how they should be handled. Use log messages where necessary.
+
+6. You may use additional third-party dependencies as you see fit. Please include your reasoning for your choice of libraries in your solution.
 
 == Getting started
 
