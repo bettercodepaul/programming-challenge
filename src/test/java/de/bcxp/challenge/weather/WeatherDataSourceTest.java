@@ -1,6 +1,7 @@
-package de.bcxp.challenge.data.weather;
+package de.bcxp.challenge.weather;
 
-import de.bcxp.challenge.data.DataSource;
+import de.bcxp.challenge.weather.utils.WeatherDataSourceEnum;
+import de.bcxp.challenge.weather.utils.WeatherDataSourceFactory;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 

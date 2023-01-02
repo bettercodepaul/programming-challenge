@@ -1,7 +1,5 @@
-package de.bcxp.challenge.stats;
+package de.bcxp.challenge.weather;
 
-
-import de.bcxp.challenge.data.weather.WeatherRecord;
 
 import java.util.Comparator;
 import java.util.stream.Stream;

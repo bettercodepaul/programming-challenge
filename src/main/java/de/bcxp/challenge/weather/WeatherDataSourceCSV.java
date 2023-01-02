@@ -1,7 +1,6 @@
-package de.bcxp.challenge.data.weather;
+package de.bcxp.challenge.weather;
 
 import com.opencsv.bean.CsvToBeanBuilder;
-import de.bcxp.challenge.data.DataSource;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

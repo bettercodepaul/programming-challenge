@@ -1,9 +1,9 @@
 package de.bcxp.challenge;
 
-import de.bcxp.challenge.data.DataSource;
-import de.bcxp.challenge.data.weather.WeatherDataSourceCSV;
-import de.bcxp.challenge.data.weather.WeatherRecord;
-import de.bcxp.challenge.stats.WeatherStats;
+import de.bcxp.challenge.weather.DataSource;
+import de.bcxp.challenge.weather.WeatherDataSourceCSV;
+import de.bcxp.challenge.weather.WeatherRecord;
+import de.bcxp.challenge.weather.WeatherStats;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;

@@ -1,4 +1,4 @@
-package de.bcxp.challenge.data.weather;
+package de.bcxp.challenge.weather;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
