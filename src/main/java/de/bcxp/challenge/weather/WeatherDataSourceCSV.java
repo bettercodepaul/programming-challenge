@@ -13,8 +13,9 @@ public class WeatherDataSourceCSV implements DataSource<WeatherRecord> {
     public WeatherDataSourceCSV(Path csvPath) throws FileNotFoundException {
         // FileNotFoundException is an exception type that is clearly specific to a file-based implementation of the
         // DataSource interface. Usually we should avoid throwing implementation-specific exceptions that are not
-        // defined by the interface. But for the constructor it's okay under the assumption that the data source will
-        // be initialized in a "dirty main" function and then injected into the application.
+        // defined by the interface. But for the constructor it's okay under the assumption that the only place that
+        // will use the implementation-specific constructor is the main function in which the different dependencies
+        // are plugged together.
         this.csvFileReader = new FileReader(csvPath.toString());
     }
 
