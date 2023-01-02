@@ -25,6 +25,7 @@ public class WeatherDataSourceCSV implements DataSource<WeatherRecord> {
         CsvToBeanBuilder<WeatherRecord> beanBuilder = new CsvToBeanBuilder<>(this.csvFileReader);
 
         return beanBuilder
+                .withOrderedResults(true)
                 .withType(WeatherRecord.class)
                 .build()
                 .parse();
