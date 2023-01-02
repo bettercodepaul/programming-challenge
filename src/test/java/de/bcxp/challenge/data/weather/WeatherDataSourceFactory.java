@@ -4,7 +4,6 @@ import de.bcxp.challenge.data.DataSource;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
-import java.util.ArrayList;
 
 public class WeatherDataSourceFactory {
 
@@ -20,13 +19,7 @@ public class WeatherDataSourceFactory {
     }
 
     private static DataSource<WeatherRecord> newMock() {
-
-        ArrayList<WeatherRecord> records = new ArrayList<>();
-
-        records.add(new WeatherRecord(1, 88, 59));
-        records.add(new WeatherRecord(2, 79, 63));
-        records.add(new WeatherRecord(3, 77, 55));
-
+        Iterable<WeatherRecord> records = WeatherDataSourceMock.MOCK_RECORDS;
         return new WeatherDataSourceMock(records);
     }
 

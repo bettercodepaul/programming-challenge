@@ -3,6 +3,7 @@ package de.bcxp.challenge;
 import de.bcxp.challenge.data.DataSource;
 import de.bcxp.challenge.data.weather.WeatherDataSourceCSV;
 import de.bcxp.challenge.data.weather.WeatherRecord;
+import de.bcxp.challenge.stats.WeatherStats;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
@@ -18,12 +19,12 @@ public final class App {
      */
     public static void main(String... args) {
 
-        DataSource<WeatherRecord> weatherDataSource = tryInitWeatherDataSource(
+        Iterable<WeatherRecord> weatherData = tryInitWeatherDataSource(
                 Path.of("./src/main/resources/de/bcxp/challenge/weather.csv")
-        );
+        ).getData();
 
-        int dayWithSmallestTempSpread = -1;
-        System.out.printf("Day with smallest temperature spread: %s%n", dayWithSmallestTempSpread);
+        WeatherRecord recordWithSmallestTempSpread = WeatherStats.findMinTemperatureSpread(weatherData);
+        System.out.printf("Day with smallest temperature spread: %s%n", recordWithSmallestTempSpread.getDay());
 
         String countryWithHighestPopulationDensity = "Some country"; // Your population density analysis function call …
         System.out.printf("Country with highest population density: %s%n", countryWithHighestPopulationDensity);

@@ -3,7 +3,16 @@ package de.bcxp.challenge.data.weather;
 
 import de.bcxp.challenge.data.DataSource;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class WeatherDataSourceMock implements DataSource<WeatherRecord> {
+
+    public static final List<WeatherRecord> MOCK_RECORDS = Arrays.asList(
+            new WeatherRecord(1, 88, 59),
+            new WeatherRecord(2, 79, 63),
+            new WeatherRecord(3, 77, 55)
+    );
 
     private final Iterable<WeatherRecord> records;
 
