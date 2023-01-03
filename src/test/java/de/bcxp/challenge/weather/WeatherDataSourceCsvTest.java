@@ -1,5 +1,8 @@
 package de.bcxp.challenge.weather;
 
+import de.bcxp.challenge.weather.data.DataSource;
+import de.bcxp.challenge.weather.data.WeatherDataSourceCSV;
+import de.bcxp.challenge.weather.data.WeatherRecord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +27,7 @@ public class WeatherDataSourceCsvTest {
 
 
     @Test
-    public void testEmptyCsvResultsInRuntimeException() throws FileNotFoundException {
+    public void testEmptyCsvThrowsRuntimeException() throws FileNotFoundException {
 
         // GIVEN a data source for an empty CSV file
         Path csvPath = Path.of("./src/test/resources/challenge/weather_empty.csv");
@@ -42,7 +45,7 @@ public class WeatherDataSourceCsvTest {
 
 
     @Test
-    public void testUnexpectedFloatValuesLeadToRuntimeException() throws FileNotFoundException {
+    public void testUnexpectedFloatValuesThrowRuntimeException() throws FileNotFoundException {
 
         // GIVEN a data source pointing to a CSV with float values instead of the expected integers
         Path csvPath = Path.of("./src/test/resources/challenge/weather_with_float.csv");

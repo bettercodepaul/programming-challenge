@@ -1,6 +1,8 @@
 package de.bcxp.challenge.weather;
 
 
+import de.bcxp.challenge.weather.data.WeatherRecord;
+import de.bcxp.challenge.weather.stats.WeatherStats;
 import de.bcxp.challenge.weather.utils.WeatherDataSourceMock;
 import org.junit.jupiter.api.Test;
 

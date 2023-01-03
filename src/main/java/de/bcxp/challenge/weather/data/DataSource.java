@@ -1,4 +1,4 @@
-package de.bcxp.challenge.weather;
+package de.bcxp.challenge.weather.data;
 
 
 public interface DataSource<T> {
