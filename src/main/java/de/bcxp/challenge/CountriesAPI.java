@@ -2,7 +2,7 @@ package de.bcxp.challenge;
 
 import java.util.List;
 
-public class CountriesAPI {
+public class CountriesAPI implements IAPI {
 
     private ICountriesService service;
     private IFileParser parser;

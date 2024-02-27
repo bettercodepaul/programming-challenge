@@ -2,7 +2,7 @@ package de.bcxp.challenge;
 
 import java.util.List;
 
-public class WeatherAPI {
+public class WeatherAPI implements IAPI {
 
     private IWeatherService service;
     private IFileParser parser;

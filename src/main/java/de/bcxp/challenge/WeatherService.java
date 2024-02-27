@@ -4,7 +4,7 @@ import java.util.List;
 
 public class WeatherService implements IWeatherService {
 
-    IWeatherRepository repository;
+    private IWeatherRepository repository;
 
     public WeatherService() {
         this.repository = new WeatherRepository();

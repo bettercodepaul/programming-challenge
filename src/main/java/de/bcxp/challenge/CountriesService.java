@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CountriesService implements ICountriesService {
 
-    ICountriesRepository repository;
+    private ICountriesRepository repository;
 
     public CountriesService() {
         this.repository = new CountriesRepository();

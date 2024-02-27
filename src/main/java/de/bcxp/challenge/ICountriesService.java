@@ -1,10 +1,5 @@
 package de.bcxp.challenge;
 
-import java.util.List;
-
-public interface ICountriesService {
-
-    void extractDataToDB(List<String[]> data);
+public interface ICountriesService extends IService {
     String getCountryWithHighestPopulationDensity();
-    public void closeConnection();
 }
