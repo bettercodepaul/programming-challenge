@@ -29,7 +29,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <exec.mainClass>de.bcxp.challenge.App</exec.mainClass>
+        <exec.mainClass>de.bcxp.challenge.configuration.AppConfig</exec.mainClass>
         <maven.compiler.source>1.11</maven.compiler.source>
         <maven.compiler.target>1.11</maven.compiler.target>
     </properties>
@@ -39,6 +39,13 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.8.0-M1</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Mockito for mocking dependencies -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.12.4</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

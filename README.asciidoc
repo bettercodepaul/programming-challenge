@@ -3,16 +3,8 @@
 
 = BettercallPaul programming challenge
 
-This repository provides the project scaffold for a simple
-programming challenge. Though the challenge is very simple
-and a rather synthetic use-case, your results are a helpful
-starting point to discuss your programming flavor, skills
-and methodology.
-
-**BEFORE STARTING:** Please take the time and read this 
-document completely and carefully! It describes important 
-parts of the challenge.
-
+This repository provides a solution for the
+programming challenge.
 
 == Goal
 
@@ -22,24 +14,7 @@ Implement a solution for the given tasks which aims for
 * readability & maintainability
 * clean software design & architecture
 
-Be prepared to discuss your implementation and software design
-decisions. Show us how you would solve the task when working on your day-to-day 
-job.
-
-Feel free to come up with own ideas & solutions. There is no plain
-"right" or "wrong". Instead, we want to talk to you
-about _how_ you achieved your goal and about your thoughts and design
-idea and process.
-
-
-
-== Tasks
-
-=== Time estimation
-Between ~1.5 hour up to ~4 hours,  +
-depending on your previous experience & development environment.
-
-=== Task
+== Task
 
 Weather::
     In `weather.csv` you’ll find the daily weather data of a single month.
@@ -143,9 +118,3 @@ To remove the compilation output::
 Or use your IDE functionality::
     to run & debug your program.
 
-== Submitting your results
-
-Ideally you provide your solutions as Git repository with
-appropriate commits and descriptions. If you have a GitLab.com
-or GitHub account, please feel free to publish your solution
-there.
