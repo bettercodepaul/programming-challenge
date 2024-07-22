@@ -1,6 +1,6 @@
 package de.bcxp.challenge;
 
-import de.bcxp.challenge.adapters.repository.CsvWeatherFileReader;
+import de.bcxp.challenge.adapters.csv.CsvWeatherFileReader;
 import de.bcxp.challenge.adapters.repository.FileWeatherRepository;
 import de.bcxp.challenge.core.entities.WeatherRecord;
 import de.bcxp.challenge.ports.IWeatherRepository;
@@ -24,7 +24,7 @@ public class FileWeatherRepositoryTest {
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        weatherRepository = new FileWeatherRepository(mockCsvWeatherFileReader, "test_weather.csv");
+        weatherRepository = new FileWeatherRepository(mockCsvWeatherFileReader);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class FileWeatherRepositoryTest {
         );
 
         // Mock behavior
-        when(mockCsvWeatherFileReader.readWeatherData("test_weather.csv")).thenReturn(mockWeatherRecords);
+        when(mockCsvWeatherFileReader.readData()).thenReturn(mockWeatherRecords);
 
         // Test the method
         List<WeatherRecord> weatherRecords = weatherRepository.getAllWeatherData();
