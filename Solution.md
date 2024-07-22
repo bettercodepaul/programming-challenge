@@ -39,3 +39,10 @@ The architecture diagram illustrates the layered structure of the application,
 highlighting the separation of concerns (layer) and the flow of dependencies.
 
 <img src="bcxp-solution-diagram.png">
+
+# Next steps
+
+- Refactor CsvFileReader to leverage Builder Pattern Architecture; or 
+- (better) Refactor CSV files to use OpenCSV: a CSV reader was built from scratch in this challenge for learning purposes, a well-defined and complete community package like openCSV could be used instead
+
+- Create csv-related Exceptions for a more granular exception handling (in case we have JSON and other types of files)
