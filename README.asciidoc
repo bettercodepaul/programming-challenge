@@ -6,7 +6,8 @@
 This repository provides a solution for the
 programming challenge.
 
-See [the solution page](Solution.md) for detailed explanations, architecture decisions and diagrams.
+
+See the link:Solution.md[solution page] for detailed explanations, architecture decisions and diagrams.
 
 == Goal
 
