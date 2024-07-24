@@ -1,9 +1,15 @@
 package de.bcxp.challenge.core.entities;
 
 public class WeatherRecord {
-    private final String date;
-    private final double maxTemperature;
-    private final double minTemperature;
+
+    private String date;
+
+    private double maxTemperature;
+    
+    private double minTemperature;
+
+    public WeatherRecord() {
+    }
 
     public WeatherRecord(String date, double maxTemperature, double minTemperature) {
         this.date = date;
@@ -15,12 +21,24 @@ public class WeatherRecord {
         return date;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public double getMaxTemperature() {
         return maxTemperature;
     }
 
+    public void setMaxTemperature(double maxTemperature) {
+        this.maxTemperature = maxTemperature;
+    }
+
     public double getMinTemperature() {
         return minTemperature;
+    }
+
+    public void setMinTemperature(double minTemperature) {
+        this.minTemperature = minTemperature;
     }
 
     public double getTemperatureRange() {

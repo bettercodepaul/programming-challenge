@@ -1,52 +1,42 @@
 package de.bcxp.challenge.adapters.csv;
 
 import de.bcxp.challenge.core.entities.WeatherRecord;
-import de.bcxp.challenge.exceptions.FileFormatException;
 
+import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CsvWeatherFileReader extends CsvFileReader<WeatherRecord> {
-    public CsvWeatherFileReader(String filePath) {
-        super(filePath);
-    }
-
-    public CsvWeatherFileReader(String filePath, CsvParser parser) {
-        super(filePath, parser);
-    }
-    @Override
-    protected WeatherRecord parseLine(String[] values, Map<String, Integer> columnIndexes) throws FileFormatException {
-        if (values.length < columnIndexes.size()) {
-            throw new FileFormatException("Invalid CSV line: " + String.join(",", values));
-        }
-
-        String date = validateDate(values[columnIndexes.get("Day")]);
-        try {
-            double maxTemperature = validateTemperature(values[columnIndexes.get("MxT")]);
-            double minTemperature = validateTemperature(values[columnIndexes.get("MnT")]);
-            return new WeatherRecord(date, maxTemperature, minTemperature);
-        } catch (NumberFormatException e) {
-            throw new FileFormatException("Invalid CSV line: " + String.join(",", values));
-        }
+    public CsvWeatherFileReader(Builder builder) {
+        super(builder);
     }
 
     @Override
-    protected String[] getExpectedHeaders() {
-        return new String[]{"Day", "MxT", "MnT"}; // TODO refactor to receive headers as parameters
+    protected LocalizedHeaderColumnNameTranslateMappingStrategy<WeatherRecord> createMappingStrategy() {
+        Map<String, String> columnMapping = new HashMap<>();
+        columnMapping.put("Day", "date");
+        columnMapping.put("MxT", "maxTemperature");
+        columnMapping.put("MnT", "minTemperature");
+
+        LocalizedHeaderColumnNameTranslateMappingStrategy<WeatherRecord> strategy =
+                new LocalizedHeaderColumnNameTranslateMappingStrategy<>();
+        strategy.setLocale(locale.toString()); // This must be defined before setType
+        strategy.setType(WeatherRecord.class);
+        strategy.setColumnMapping(columnMapping);
+
+        return strategy;
     }
 
-    private String validateDate(String dateStr) {
-        try {
-            int date = Integer.parseInt(dateStr);
-            if (date < 1 || date > 31) {
-                throw new FileFormatException("Invalid date number: " + dateStr);
-            }
-            return Integer.toString(date);
-        } catch (NumberFormatException e) {
-            throw new FileFormatException("Invalid date format: " + dateStr, e);
+    // Builder class
+    public static class Builder extends CsvFileReader.Builder<WeatherRecord> {
+
+        public Builder(InputStream inputStream) {
+            super(inputStream);
         }
-    }
 
-    private double validateTemperature(String tempStr) throws NumberFormatException {
-        return Double.parseDouble(tempStr);
+        @Override
+        public CsvWeatherFileReader build() {
+            return new CsvWeatherFileReader(this);
+        }
     }
 }

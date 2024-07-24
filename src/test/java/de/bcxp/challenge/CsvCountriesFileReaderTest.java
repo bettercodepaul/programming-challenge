@@ -1,14 +1,14 @@
 package de.bcxp.challenge;
 
 import de.bcxp.challenge.adapters.csv.CsvCountryFileReader;
+import de.bcxp.challenge.configuration.AppConfig;
 import de.bcxp.challenge.core.entities.CountryRecord;
-import de.bcxp.challenge.exceptions.FileFormatException;
-import org.junit.jupiter.api.BeforeEach;
+import de.bcxp.challenge.exceptions.CsvFileFormatException;
+import de.bcxp.challenge.ports.IFileReader;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-import de.bcxp.challenge.adapters.csv.CsvParser;
 
-import java.nio.charset.StandardCharsets;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Locale;
 
@@ -16,46 +16,42 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CsvCountriesFileReaderTest {
-
-    private CsvCountryFileReader csvCountryFileReader;
-    private CsvParser csvParser;
-
-    @BeforeEach
-    public void setUp() {
-        csvParser = new CsvParser.CsvParserBuilder().withDelimiter(";").withLocale(Locale.GERMANY).withCharset(StandardCharsets.UTF_8).build();
-    }
-
     @Test
-    public void testReadCountryData_InvalidHeader() {
-        String filePath = "de/bcxp/challenge/invalid_header_countries.csv";
-        csvCountryFileReader = new CsvCountryFileReader(filePath, csvParser);
+    public void testReadCountryData_InvalidLocale() {
+        InputStream inputStream =
+                AppConfig.class.getClassLoader().getResourceAsStream("de/bcxp/challenge/invalid_line_countries.csv");
+        IFileReader<CountryRecord> countryReader =
+                new CsvCountryFileReader.Builder(inputStream).withSeparator(';').withLocale(
+                        Locale.UK).build();
 
-        Executable executable = () -> csvCountryFileReader.readData();
+        Executable executable = countryReader::readData;
 
-        FileFormatException exception = assertThrows(FileFormatException.class, executable);
-        assertEquals("Invalid CSV file format. Expected headers: Name,Population,Area (km²)", exception.getMessage());
+        CsvFileFormatException exception = assertThrows(CsvFileFormatException.class, executable);
+        assertEquals("Error reading CSV file", exception.getMessage());
     }
 
     @Test
     public void testReadCountryData_InvalidLine() {
-        String filePath = "de/bcxp/challenge/invalid_line_countries.csv";
-        csvCountryFileReader = new CsvCountryFileReader(filePath, csvParser);
+        InputStream inputStream =
+                AppConfig.class.getClassLoader().getResourceAsStream("de/bcxp/challenge/invalid_line_countries.csv");
+        IFileReader<CountryRecord> countryReader =
+                new CsvCountryFileReader.Builder(inputStream).withSeparator(';').withLocale(
+                        Locale.GERMANY).build();
 
-        List<CountryRecord> countryRecords = csvCountryFileReader.readData();
+        Executable executable = countryReader::readData;
 
-        // Check that valid records are read correctly
-        assertEquals(1, countryRecords.size());
-        assertEquals("Germany", countryRecords.get(0).getName());
-        assertEquals(83120520, countryRecords.get(0).getPopulation(), 0.01);
-        assertEquals(357386, countryRecords.get(0).getArea(), 0.01);
-
+        CsvFileFormatException exception = assertThrows(CsvFileFormatException.class, executable);
+        assertEquals("Error reading CSV file", exception.getMessage());
     }
 
     @Test
     public void testReadCountryData_ValidFile() {
-        String filePath = "de/bcxp/challenge/test_countries.csv";
-        csvCountryFileReader = new CsvCountryFileReader(filePath, csvParser);
-        List<CountryRecord> countryRecords = csvCountryFileReader.readData();
+        InputStream inputStream =
+                AppConfig.class.getClassLoader().getResourceAsStream("de/bcxp/challenge/test_countries.csv");
+        IFileReader<CountryRecord> countryReader =
+                new CsvCountryFileReader.Builder(inputStream).withSeparator(';').withLocale(
+                        Locale.GERMANY).build();
+        List<CountryRecord> countryRecords = countryReader.readData();
 
         // Assertions
         assertEquals(3, countryRecords.size());
