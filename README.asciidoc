@@ -31,7 +31,11 @@ Feel free to come up with own ideas & solutions. There is no plain
 about _how_ you achieved your goal and about your thoughts and design
 idea and process.
 
+=== Use of coding assistants and AI
 
+The current wave of generative AI can be a powerful tool in the hands of a keen developer. 
+Feel free to use your coding assistant of choice when solving this challenge if you so desire.
+We're looking forward to hear about your approach.
 
 == Tasks
 
@@ -42,7 +46,7 @@ depending on your previous experience & development environment.
 === Task
 
 Weather::
-    In `weather.csv` you’ll find the daily weather data of a single month.
+    In `weather.csv` you'll find the daily weather data of a single month.
     Read the file, then output the day number (column one `Day`) of the day with
     the smallest temperature spread (difference between maximum &
     minimum temperature of the day.)
@@ -62,7 +66,7 @@ Task::
        supports the Countries challenge.
 
 Process::
-* Favour the software design goals described under _Goal_ over other goals 
+* Favour the software design goals described under _<<Goal>>_ over other goals 
   like _performance_ or _feature set_.
 * Include unit tests to ensure the correctness of your implementation.
 
