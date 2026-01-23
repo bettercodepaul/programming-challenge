@@ -10,9 +10,9 @@ public class CountryRowMapper implements RowMapper<Country> {
 
   @Override
   public Country map(String[] columns) {
-    var name = columns[NAME_INDEX];
-    var population = parseFormattedNumber(columns[POPULATION_INDEX]);
-    var area = Double.parseDouble(columns[AREA_INDEX]);
+    var name = columns[NAME_INDEX].trim();
+    var population = parseFormattedNumber(columns[POPULATION_INDEX].trim());
+    var area = Double.parseDouble(columns[AREA_INDEX].trim());
 
     return new Country(name, population, area);
   }

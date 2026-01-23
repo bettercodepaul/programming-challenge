@@ -10,9 +10,9 @@ public class WeatherRowMapper implements RowMapper<WeatherDay> {
 
   @Override
   public WeatherDay map(String[] columns) {
-    var day = Integer.parseInt(columns[DAY_INDEX]);
-    var maxTemp = Double.parseDouble(columns[MAX_TEMP_INDEX]);
-    var minTemp = Double.parseDouble(columns[MIN_TEMP_INDEX]);
+    var day = Integer.parseInt(columns[DAY_INDEX].trim());
+    var maxTemp = Double.parseDouble(columns[MAX_TEMP_INDEX].trim());
+    var minTemp = Double.parseDouble(columns[MIN_TEMP_INDEX].trim());
 
     return new WeatherDay(day, maxTemp, minTemp);
   }
